@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">android_1_hw_2</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="choose_the_date">Choose the date</string>
+    <string name="ok">Ok</string>
 </resources>
