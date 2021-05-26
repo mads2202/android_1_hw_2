@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity(), Callback {
         setContentView(R.layout.activity_main_drawer)
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
-         drawer = findViewById<DrawerLayout>(R.id.drawer_layout)
+        drawer = findViewById<DrawerLayout>(R.id.drawer_layout)
         val toggle = ActionBarDrawerToggle(
                 this, drawer, toolbar,
                 R.string.navigation_drawer_open,
@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity(), Callback {
         toggle.syncState();
         supportFragmentManager.beginTransaction().replace(R.id.fragments_container, NoteListFragment()).commit()
     }
+
     override fun onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START)
@@ -38,11 +39,12 @@ class MainActivity : AppCompatActivity(), Callback {
     }
 
 
-
-
     override fun onNoteSelected(id: UUID) {
+
         if (findViewById<View>(R.id.detail_fragment_container) == null) {
-            supportFragmentManager.beginTransaction().replace(R.id.fragments_container, SingleNoteFragment.newInstance(id)).commit()
+            supportFragmentManager.beginTransaction().replace(R.id.fragments_container, SingleNoteFragment.newInstance(id)).addToBackStack(null).commit()
+
+
         } else {
             supportFragmentManager.beginTransaction().replace(R.id.detail_fragment_container, SingleNoteFragment.newInstance(id)).commit()
 
