@@ -20,7 +20,7 @@ class NoteListFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_note_list, container, false)
         mRecyclerView = view.findViewById(R.id.recycler_view_note_list)
         mRecyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-        mRecyclerView.adapter=MyAdapter(NoteLab.noteList)
+        mRecyclerView.adapter = MyAdapter(NoteLab.noteList)
         return view
     }
 
@@ -39,14 +39,15 @@ class NoteListFragment : Fragment() {
         }
 
     }
-    inner class MyAdapter(var noteList:List<Note>):RecyclerView.Adapter<MyHolder>(){
+
+    inner class MyAdapter(var noteList: List<Note>) : RecyclerView.Adapter<MyHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
-            return MyHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_item_note,parent,false))
+            return MyHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_item_note, parent, false))
         }
 
         override fun onBindViewHolder(holder: MyHolder, position: Int) {
             holder.bind(noteList[position])
-            holder.itemView.setOnClickListener{
+            holder.itemView.setOnClickListener {
                 callback.onNoteSelected(noteList[position].id)
             }
 
@@ -59,7 +60,7 @@ class NoteListFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        callback=context as Callback
+        callback = context as Callback
     }
 
 
