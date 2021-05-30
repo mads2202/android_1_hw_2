@@ -10,4 +10,6 @@
     <string name="navigation_drawer_close">close</string>
     <string name="malyshev">malyshev2202@yandex.ru</string>
     <string name="example">Example</string>
+    <string name="delete">delete</string>
+    <string name="add">add</string>
 </resources>
