@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(), Callback {
                 R.string.navigation_drawer_close)
 
         drawer.addDrawerListener(toggle);
-        toggle.syncState();
+        toggle.syncState()
         supportFragmentManager.beginTransaction().replace(R.id.fragments_container, NoteListFragment()).commit()
     }
 
@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity(), Callback {
 
         if (findViewById<View>(R.id.detail_fragment_container) == null) {
             supportFragmentManager.beginTransaction().replace(R.id.fragments_container, SingleNoteFragment.newInstance(id)).addToBackStack(null).commit()
+
 
 
         } else {

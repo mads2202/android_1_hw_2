@@ -33,6 +33,7 @@ class DatePickerFragment : DialogFragment() {
         var year = calendar.get(Calendar.YEAR)
         var month = calendar.get(Calendar.MONTH)
         var day = calendar.get(Calendar.DAY_OF_MONTH)
+        layoutInflater
         var view = LayoutInflater.from(activity).inflate(R.layout.fragment_date_picker, null)
         var datePicker: DatePicker = view.findViewById(R.id.dialog_date_picker)
         datePicker.init(year, month, day, null)
