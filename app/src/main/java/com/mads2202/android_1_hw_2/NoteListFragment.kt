@@ -2,9 +2,12 @@ package com.mads2202.android_1_hw_2
 
 
 import android.content.Context
+import android.content.DialogInterface
+import android.content.DialogInterface.OnClickListener
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -128,8 +131,17 @@ class NoteListFragment : Fragment() {
                 adapter.notifyItemInserted(NoteLab.noteList.size - 1)
             }
             R.id.action_delete -> {
-                NoteLab.noteList.removeAt(adapter.mPosition)
-                adapter.notifyItemRemoved(adapter.mPosition)
+                AlertDialog.Builder(activity!!).setCancelable(true).setMessage(R.string.delete_item)
+                    .setNegativeButton(
+                        R.string.cancel
+                    ) { dialog, which -> dialog?.dismiss() }
+                    .setPositiveButton(R.string.ok) { dialog, which ->
+                        run {
+                            NoteLab.noteList.removeAt(adapter.mPosition)
+                            adapter.notifyItemRemoved(adapter.mPosition)
+                        }
+                    }.create()
+
             }
         }
         return true
